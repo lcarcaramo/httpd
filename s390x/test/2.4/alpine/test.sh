@@ -35,7 +35,7 @@ build () {
 }
 
 cleanup () {
-        docker rmi -f $1
+        docker rmi $1
 }
 
 suite_start () {
@@ -52,5 +52,8 @@ suite_start
                 build "serves-web-pages"
                 docker run -dit --rm --name serves-web-pages "serves-web-pages"
                 print_success $(docker exec serves-web-pages curl -i localhost:80 | grep Success!)
+                print_success "The quay.io/ibmz/httpd:2.4.46 image is serving web pages."
+                print_success "Terminating container..."
+                docker rm -f serves-web-pages
                 cleanup "serves-web-pages"
 suite_end
