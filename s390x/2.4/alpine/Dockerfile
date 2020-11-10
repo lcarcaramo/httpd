@@ -221,4 +221,4 @@ STOPSIGNAL SIGWINCH
 COPY httpd-foreground /usr/local/bin/
 
 EXPOSE 80
-CMD ["httpd-foreground"]
+ENTRYPOINT ["/usr/local/bin/httpd-foreground"]
