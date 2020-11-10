@@ -17,7 +17,7 @@ This image only contains Apache httpd with the defaults from upstream. There is 
 ### Create a `Dockerfile` in your project
 
 ```dockerfile
-FROM httpd:2.4
+FROM quay.io/ibmz/httpd:2.4.46
 COPY ./public-html/ /usr/local/apache2/htdocs/
 ```
 
@@ -36,13 +36,13 @@ Visit http://localhost:8080 and you will see It works!
 To customize the configuration of the httpd server, first obtain the upstream default configuration from the container:
 
 ```console
-$ docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
+$ docker run --rm quay.io/ibmz/httpd:2.4.46 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
 ```
 
 You can then `COPY` your custom configuration in as `/usr/local/apache2/conf/httpd.conf`:
 
 ```dockerfile
-FROM httpd:2.4
+FROM quay.io/ibmz/httpd:2.4.46
 COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 ```
 
