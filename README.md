@@ -30,13 +30,6 @@ $ docker run -dit --name my-running-app -p 8080:80 my-apache2
 
 Visit http://localhost:8080 and you will see It works!
 
-### Without a `Dockerfile`
-
-If you don't want to include a `Dockerfile` in your project, it is sufficient to do the following:
-
-```console
-$ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
-```
 
 ### Configuration
 
@@ -55,7 +48,7 @@ COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 
 #### SSL/HTTPS
 
-If you want to run your web traffic over SSL, the simplest setup is to `COPY` or mount (`-v`) your `server.crt` and `server.key` into `/usr/local/apache2/conf/` and then customize the `/usr/local/apache2/conf/httpd.conf` by removing the comment symbol from the following lines:
+If you want to run your web traffic over SSL, the simplest setup is to `COPY` your `server.crt` and `server.key` into `/usr/local/apache2/conf/` and then customize the `/usr/local/apache2/conf/httpd.conf` by removing the comment symbol from the following lines:
 
 ```apacheconf
 ...
