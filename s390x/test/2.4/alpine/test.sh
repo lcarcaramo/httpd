@@ -51,6 +51,6 @@ suite_start
         print_test_case "It can serve a web page:"
                 build "serves-web-pages"
                 docker run -dit --rm --name serves-web-pages "serves-web-pages"
-                curl -i localhost:8080
+                docker exec serves-web-pages curl -i localhost:80
                 cleanup "serves-web-pages"
 suite_end
