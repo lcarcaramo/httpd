@@ -35,7 +35,7 @@ build () {
 }
 
 cleanup () {
-        docker rmi $1
+        docker rmi -f $1
 }
 
 suite_start () {
@@ -51,6 +51,6 @@ suite_start
         print_test_case "It can serve a web page:"
                 build "serves-web-pages"
                 docker run -dit --rm --name serves-web-pages "serves-web-pages"
-                docker exec serves-web-pages curl -i localhost:80
+                print_success $(docker exec serves-web-pages curl -i localhost:80 | grep Success)
                 cleanup "serves-web-pages"
 suite_end
