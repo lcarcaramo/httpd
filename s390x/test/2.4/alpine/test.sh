@@ -51,6 +51,7 @@ suite_start
         print_test_case "It can serve a web page:"
                 build "serves-web-pages"
                 docker run -dit --rm --name serves-web-pages "serves-web-pages"
-                print_success $(docker exec serves-web-pages curl -i localhost:80 | grep Success)
+                print_success $(docker exec serves-web-pages curl -i localhost:80 | \
+                        grep "Success! This web page is being served using the quay.io/ibmz/httpd:2.4.46 image.")
                 cleanup "serves-web-pages"
 suite_end
