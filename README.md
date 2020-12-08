@@ -1,8 +1,10 @@
 # Tags
-> _Built from [`quay.io/ibmz/alpine:3.12`](https://quay.io/repository/ibmz/alpine?tab=info)_
--	[`2.4.46`](https://github.com/lcarcaramo/httpd/blob/master/s390x/2.4/alpine/Dockerfile) - [![Build Status](https://travis-ci.com/lcarcaramo/httpd.svg?branch=master)](https://travis-ci.com/lcarcaramo/httpd)
+> _Built from [`quay.io/ibm/alpine:3.12`](https://quay.io/repository/ibm/alpine?tab=info)_
+-	`2.4.46` - [![Build Status](https://travis-ci.com/lcarcaramo/httpd.svg?branch=master)](https://travis-ci.com/lcarcaramo/httpd)
 
-# What is httpd?
+### __[Original Source Code](https://github.com/docker-library/httpd)__
+
+# httpd
 
 The Apache HTTP Server, colloquially called Apache, is a Web server application notable for playing a key role in the initial growth of the World Wide Web. Originally based on the NCSA HTTPd server, development of Apache began in early 1995 after work on the NCSA code stalled. Apache quickly overtook NCSA HTTPd as the dominant HTTP server, and has remained the most popular HTTP server in use since April 1996.
 
@@ -17,7 +19,7 @@ This image only contains Apache httpd with the defaults from upstream. There is 
 ### Create a `Dockerfile` in your project
 
 ```dockerfile
-FROM quay.io/ibmz/httpd:2.4.46
+FROM quay.io/ibm/httpd:2.4.46
 COPY ./public-html/ /usr/local/apache2/htdocs/
 ```
 
@@ -36,13 +38,13 @@ Visit http://localhost:8080 and you will see It works!
 To customize the configuration of the httpd server, first obtain the upstream default configuration from the container:
 
 ```console
-$ docker run --rm quay.io/ibmz/httpd:2.4.46 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
+$ docker run --rm quay.io/ibm/httpd:2.4.46 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
 ```
 
 You can then `COPY` your custom configuration in as `/usr/local/apache2/conf/httpd.conf`:
 
 ```dockerfile
-FROM quay.io/ibmz/httpd:2.4.46
+FROM quay.io/ibm/httpd:2.4.46
 COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 ```
 
